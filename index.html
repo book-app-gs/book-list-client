@@ -31,7 +31,7 @@
     </header>
 
     <div class="body-container">
-        <section id="book-list">
+        <section id="books">
             <h1 class="section-title">My Books</h1>
             <div id="book-count"></div>
             <div class="book">
@@ -50,7 +50,15 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js"></script>
-    <script src="scripts/book.js"></script>
+    <script src="scripts/books.js"></script>
+    <script>app.Book.fetchAll(app.Book.initIndexPage)</script>
+    <!-- <script>
+        $.get('http://localhost:3000/api/v1/books')
+        .then(
+            function(results) {
+            console.log("here are results", results);
+            }
+        )
+        </script> -->
 </body>
 </html>
