@@ -44,3 +44,7 @@ img.book-image {
     width: 100%;
     margin-bottom: 2rem;
 }
+#footer {
+    background: #9b9b9b;
+    padding: 1rem;
+}
