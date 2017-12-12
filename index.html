@@ -15,7 +15,10 @@
     <script id="book-template" type="text/x-handlebars-template">
         <div class="book">
             <img class="book-image" src="{{imgURL}}">
-            <
+            <div class="book-info">
+                <h1 class="title">{{title}}</h1>
+                <h2 class="author">{{author}}</h2>
+            </div>
         </div>        
     </script>
 
@@ -26,6 +29,24 @@
             <h1>Books App</h1>
         </section>
     </header>
+
+    <div class="body-container">
+        <section id="book-list">
+            <h1 class="section-title">My Books</h1>
+            <div id="book-count"></div>
+            <div class="book">
+                <div class="image-holder"><img class="book-image" src="http://via.placeholder.com/350x150"></div>
+                <div class="book-info">
+                    <h3 class="title">{{title}}</h3>
+                    <h4 class="author">{{author}}</h4>
+                </div>
+            </div>
+        </section>
+        <section id="footer">
+            <span>Github</span>
+            <span>Linkedin</span>
+        </section>
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
