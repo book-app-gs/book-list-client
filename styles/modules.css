@@ -1,0 +1,46 @@
+.heading-group {
+    background: #4a4a4a;
+    padding: 1rem;
+    color: #d8d8d8;
+}
+.heading-group h1 {
+    font-weight: lighter;
+}
+.body-container {
+    background: #d8d8d8;
+    padding: 1rem;
+}
+.section-title {
+    text-decoration: underline;
+    color: #4a4a4a;
+    font-weight: normal;
+}
+
+.book {
+    border-radius: 1rem 1rem 0 0;
+    background: #9b9b9b;
+}
+.book-info {
+    background: #4a4a4a;
+    padding: 1rem;
+}
+
+.title {
+    color: #d8d8d8;
+    font-weight: normal;
+    font-size: 2rem;
+}
+.author {
+    color: #d8d8d8;
+    font-weight: normal;
+    font-size: 1.5rem;
+    font-style: italic;
+}
+.image-holder {
+    max-height: 350px;
+    overflow: hidden;
+}
+img.book-image {
+    width: 100%;
+    margin-bottom: 2rem;
+}
