@@ -94,7 +94,7 @@ img.book-image {
   }
 
 
-  /* modules book-description */
+  /* modules book-details */
   .book-title {text-decoration: underline; margin: 0; font-weight: normal;font-size: 1.5rem;}
   .book-author {font-style: italic;display: inline-block; float: left;}
   .book-isbn {font-style: italic;display: inline-block; float: right;}
