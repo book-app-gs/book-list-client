@@ -15,5 +15,6 @@ var __API_URL__ = 'http://localhost:3000';
     bookView.initIndexPage = () => {
         bookView.toggleIndex();
     }
-    module.bookView = bookView; 
+    
+    module.bookView = bookView; // keep at bottom
 })(app);
