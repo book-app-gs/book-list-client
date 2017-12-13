@@ -48,3 +48,7 @@ img.book-image {
     background: #9b9b9b;
     padding: 1rem;
 }
+
+#error-message {
+    color:red;
+}

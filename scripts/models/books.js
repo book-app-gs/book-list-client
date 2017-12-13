@@ -13,8 +13,7 @@ var __API_URL__ = 'http://localhost:3000';
   Book.all = [];
 
   Book.prototype.toHtml = function() {
-    var template = Handlebars.compile($('#book-template').text());
-    this.description = marked(this.body);
+    let template = Handlebars.compile($('#book-list-template').text());
     return template(this);
   };
   
@@ -28,14 +27,10 @@ var __API_URL__ = 'http://localhost:3000';
       function(results) {
         Book.loadAll(results);
         console.log(results);
-        callback();
+        callback()
       }
     )
+    .catch(app.errorView.errorCallback)
   };
-
-  Book.initIndexPage = () => {
-    Book.all.forEach(a => $('#books').append(a.toHtml()));
-    }
-
   module.Book = Book;
 })(app);

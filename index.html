@@ -12,14 +12,18 @@
     <link rel="stylesheet" href="styles/modules.css">
     <title>Book App</title>
 
-    <script id="book-template" type="text/x-handlebars-template">
+    <script id="book-list-template" type="text/x-handlebars-template">
         <div class="book">
-            <img class="book-image" src="{{imgURL}}">
-            <div class="book-info">
-                <h1 class="title">{{title}}</h1>
-                <h2 class="author">{{author}}</h2>
-            </div>
-        </div>        
+                <div class="image-holder"><img class="book-image" src={{image_url}}></div>
+                <div class="book-info">
+                    <h3 class="title">{{title}}</h3>
+                    <h4 class="author">{{author}}</h4>
+                </div>
+            </div>        
+    </script>
+
+    <script id="error-template" type="text/x-handlebars-template">
+        <div class="error-message">{{status}}: {{statusText}}</div>
     </script>
 
 </head>
@@ -31,16 +35,11 @@
     </header>
 
     <div class="body-container">
-        <section id="books">
-            <h1 class="section-title">My Books</h1>
-            <div id="book-count"></div>
-            <div class="book">
-                <div class="image-holder"><img class="book-image" src="http://via.placeholder.com/350x150"></div>
-                <div class="book-info">
-                    <h3 class="title">{{title}}</h3>
-                    <h4 class="author">{{author}}</h4>
-                </div>
-            </div>
+        <div id="error-message-holder"></div>
+        <section id="book-list">
+            <h1 class="section-title">My Books placeholder</h1>
+            <div id="book-count">Book Count...</div>
+            
         </section>
         <section id="footer">
             <span>Github</span>
@@ -52,7 +51,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
     <script src="scripts/models/books.js"></script>
     <script src="scripts/views/bookView.js"></script>
-    <script>app.Book.fetchAll(app.bookView.initIndexPage)</script>
+    <script src="scripts/views/errorView.js"></script>
+    <script>
+        $(document).ready(function(){
+            app.Book.fetchAll(app.bookView.initIndexPage);
+        });
+    </script>
     <!-- <script>
         $.get('http://localhost:3000/api/v1/books')
         .then(
