@@ -7,8 +7,8 @@ var __API_URL__ = 'http://localhost:3000';
     var bookView = {};
 
     bookView.toggleIndex = () => {
-        $('.container').hide();
-        $('.book-view').show();
+        $('.body-container').hide();
+        $('.book-all').show();
         app.Book.all.map(a => $('#book-list').append(a.toHtml()));
     }
 

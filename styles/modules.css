@@ -110,6 +110,16 @@ img.book-image {
     font-size: 1.5rem;
     bottom: 1rem;
   }
+  .submit-holder {
+      text-align: right;
+  }
+  .book-submit {
+    border-radius: .5rem;
+    padding: 1rem 3rem;
+    font-size: 1.5rem;
+    background: #4a4a4a;
+    border-radius: .5rem;
+  }
 
 #new-book-form {
     margin-top: 2rem;

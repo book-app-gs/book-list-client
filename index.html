@@ -37,41 +37,38 @@
                 <div class="icon-menu"></div>
                 <ul>
                 <li class="tab" data-content="home"><a href="/" class="icon-home">View All Books</a></li>
-                <li class="tab" data-content="new"><a href="/new" class="icon-address-book">Add A New Book</a></li>
+                <li class="tab" data-content="new"><a href="/books/add" class="icon-address-book">Add A New Book</a></li>
                 </ul>
             </div>
         </section>
     </header>
 
     <!-- start new book view -->
-    <div class="body-container">
-        <div class="book-new">
-            <h3 class="book-title">add a new book</h3>
-            <form id="new-book-form">
-                <input type="text" placeholder="title" id="title" />
-                <input type="text" placeholder="author" id="author" />
-                <input type="text" placeholder="isbn" id="isbn" />
-                <input type="text" placeholder="url" id="url" />
-                <textarea id="description" placeholder="description..." ></textarea>
-            </form>
-        </div>
+    <div class="body-container book-new">
+        <h3 class="book-title">add a new book</h3>
+        <form id="new-book-form">
+            <input type="text" placeholder="title" id="title" />
+            <input type="text" placeholder="author" id="author" />
+            <input type="text" placeholder="isbn" id="isbn" />
+            <input type="text" placeholder="url" id="url" />
+            <textarea id="description" placeholder="description..." ></textarea>
+            <div class="submit-holder"><button class="book-submit ">submit</button></div>
+        </form>
     </div>
     <!-- end new book view -->
 
 
     <!-- start book description -->
-    <div class="body-container">
-        <div class="book-description">
-            <h3 class="book-title">{{book title}}</h3>
-            <div class="book-author">{{author}}</div>
-            <div class="book-isbn">{{isbn}}</div>
-            <img src="" class="book-image" />
-            <div class="description">{{description here}}</div>
-        </div>      
+    <div class="body-container book-description">
+        <h3 class="book-title">{{book title}}</h3>
+        <div class="book-author">{{author}}</div>
+        <div class="book-isbn">{{isbn}}</div>
+        <img src="" class="book-image" />
+        <div class="description">{{description here}}</div>
     </div>
         <!-- end book description -->
     
-    <div class="body-container">
+    <div class="body-container book-all">
         <div id="error-message-holder"></div>
         <section id="book-list">
             <div id="book-count">Book Count Here...</div>

@@ -8,7 +8,9 @@ var __API_URL__ = 'http://localhost:3000';
 
 
     newBook.initNewBookPage = () => {
-        
+        $('.body-container').hide();
+        $('.book-new').show();
+        app.Book.all.map(a => $('#book-list').append(a.toHtml()));
         $('#new-form').on('change', 'input, textarea', newBook.create);
         $('#new-form').on('submit', newBook.submit);
       };
