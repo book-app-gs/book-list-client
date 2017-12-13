@@ -18,13 +18,13 @@ var __API_URL__ = 'http://localhost:3000';
 
     bookView.initDetailPage = function(ctx) {
         $('.body-container').hide();
-        $('.book-description').show();
-        $('.book-detail').empty();
+        $('.book-details').show();
+        $('.book-details').empty();
         let template = Handlebars.compile($('#book-detail-template').text());
-        $('.book-detail').append(template(ctx));
+        $('.book-details').append(template(ctx));
     }
 
-    bookView.initCreateFormPage = function() {
+    bookView.initAddPage = function() {
         $('.body-container').hide();
         $('.book-new').show();
         $('#new-book-form').on('submit', function(event){
