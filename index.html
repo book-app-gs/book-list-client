@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="styles/base.css">
     <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="styles/modules.css">
+    <link rel="stylesheet" href="styles/theme.css">
     <title>Book App</title>
 
     <script id="book-list-template" type="text/x-handlebars-template">
@@ -30,20 +31,25 @@
 <body>
     <header class="app-header">
         <section class="heading-group">
-            <h1>Books App</h1>
+            <h1 class="nav-title">Books App</h1>
+            <div class="main-nav">
+                <div class="icon-menu"></div>
+                <ul>
+                <li class="tab" data-content="home"><a href="/" class="icon-home"> Home</a></li>
+                <li class="tab" data-content="new"><a href="/new" class="icon-address-book"> New</a></li>
+                </ul>
+            </div>
         </section>
     </header>
 
     <div class="body-container">
         <div id="error-message-holder"></div>
         <section id="book-list">
-            <h1 class="section-title">My Books placeholder</h1>
-            <div id="book-count">Book Count...</div>
-            
+            <div id="book-count">Book Count Here...</div>
         </section>
         <section id="footer">
-            <span class="icon-github">Github</span>
-            <span class="icon-linkedin">Linkedin</span>
+            <span class="icon-github"></span>
+            <span class="icon-linkedin"></span>
         </section>
     </div>
 
@@ -53,9 +59,11 @@
     <script src="scripts/models/book.js"></script>
     <script src="scripts/views/bookView.js"></script>
     <script src="scripts/views/errorView.js"></script>
+    <script src="scripts/views/temp.js"></script>
     <script>
         $(document).ready(function(){
             app.Book.fetchAll(app.bookView.initIndexPage);
+            app.Book.fetchAll(app.menuView.listenMenu);
         });
     </script>
     <!-- <script>

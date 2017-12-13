@@ -1,0 +1,20 @@
+.heading-group {
+    background: black;
+}
+
+.icon-menu {
+    color: #b62f20;
+}
+
+.nav-title::after {
+    content: '';
+    background: url(../images/logo.png);
+    background-repeat: no-repeat;
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    left: 12rem;
+    z-index: 2;
+    background-size: contain;
+    top: 2rem;
+}

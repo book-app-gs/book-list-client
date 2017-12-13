@@ -19,6 +19,7 @@
 .book {
     border-radius: 1rem 1rem 0 0;
     background: #9b9b9b;
+    margin-bottom: 4rem;
 }
 .book-info {
     background: #4a4a4a;
@@ -46,9 +47,39 @@ img.book-image {
 }
 #footer {
     background: #9b9b9b;
-    padding: 1rem;
+    padding: 2rem 1rem 6rem;
+    text-align: right;
+    color: #4a4a4a;
+    font-size: 3rem;
+}
+[class^="icon-"] {
+    padding: 0 1rem 0 0;
 }
 
 #error-message {
     color:red;
 }
+
+.icon-menu {
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    font-size: 3rem;
+    margin: 1rem;
+  }
+  .main-nav:hover ul{
+    /* display: block; */
+  }
+  .main-nav ul {
+    display: none;
+    padding: 0;
+    font-size: 1.5rem;
+    line-height: 3.5rem;
+  }
+   .main-nav ul li {
+    border-bottom: 1px solid #777;
+   }
+  .main-nav ul li a {
+    text-decoration: none;
+    color: #777;
+  }
