@@ -1,8 +1,18 @@
 body {
     margin: 0;
     font-family: sans-serif;
+    color: #4a4a4a;
+    overflow-x: hidden;
 }
 
 ul {
     list-style: none;
 }
+
+input, textarea {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: .25rem;
+    min-height: 2rem;
+} 

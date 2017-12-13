@@ -24,6 +24,7 @@
 .book-info {
     background: #4a4a4a;
     padding: 1rem;
+    position: relative;
 }
 
 .title {
@@ -44,6 +45,7 @@
 img.book-image {
     width: 100%;
     margin-bottom: 2rem;
+    min-height: 2rem;
 }
 #footer {
     background: #9b9b9b;
@@ -75,11 +77,40 @@ img.book-image {
     padding: 0;
     font-size: 1.5rem;
     line-height: 3.5rem;
+    color: white;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    background: rgba(0, 0, 0, 0.90);
+    margin: 0;
+    padding: 1rem;
   }
    .main-nav ul li {
-    border-bottom: 1px solid #777;
+
    }
   .main-nav ul li a {
     text-decoration: none;
-    color: #777;
+    color: #fff;
   }
+
+
+  /* modules book-description */
+  .book-title {text-decoration: underline; margin: 0; font-weight: normal;font-size: 1.5rem;}
+  .book-author {font-style: italic;display: inline-block; float: left;}
+  .book-isbn {font-style: italic;display: inline-block; float: right;}
+  .book-image {width: 100%;}
+  .book-description {
+    line-height: 2rem;
+  }
+  .book-view-details {
+    border-radius: .5rem;
+    padding: 1rem 3rem;
+    position: absolute;
+    right: 1rem;
+    font-size: 1.5rem;
+    bottom: 1rem;
+  }
+
+#new-book-form {
+    margin-top: 2rem;
+}

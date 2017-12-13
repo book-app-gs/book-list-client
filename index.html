@@ -19,6 +19,7 @@
                 <div class="book-info">
                     <h3 class="title">{{title}}</h3>
                     <h4 class="author">{{author}}</h4>
+                    <button class="book-view-details">view details</button>
                 </div>
             </div>        
     </script>
@@ -35,13 +36,41 @@
             <div class="main-nav">
                 <div class="icon-menu"></div>
                 <ul>
-                <li class="tab" data-content="home"><a href="/" class="icon-home"> Home</a></li>
-                <li class="tab" data-content="new"><a href="/new" class="icon-address-book"> New</a></li>
+                <li class="tab" data-content="home"><a href="/" class="icon-home">View All Books</a></li>
+                <li class="tab" data-content="new"><a href="/new" class="icon-address-book">Add A New Book</a></li>
                 </ul>
             </div>
         </section>
     </header>
 
+    <!-- start new book view -->
+    <div class="body-container">
+        <div class="book-new">
+            <h3 class="book-title">add a new book</h3>
+            <form id="new-book-form">
+                <input type="text" placeholder="title" id="title" />
+                <input type="text" placeholder="author" id="author" />
+                <input type="text" placeholder="isbn" id="isbn" />
+                <input type="text" placeholder="url" id="url" />
+                <textarea id="description" placeholder="description..." ></textarea>
+            </form>
+        </div>
+    </div>
+    <!-- end new book view -->
+
+
+    <!-- start book description -->
+    <div class="body-container">
+        <div class="book-description">
+            <h3 class="book-title">{{book title}}</h3>
+            <div class="book-author">{{author}}</div>
+            <div class="book-isbn">{{isbn}}</div>
+            <img src="" class="book-image" />
+            <div class="description">{{description here}}</div>
+        </div>      
+    </div>
+        <!-- end book description -->
+    
     <div class="body-container">
         <div id="error-message-holder"></div>
         <section id="book-list">
