@@ -4,7 +4,7 @@
 **Version**: 0.3.0
 
 ## Overview
-<!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for a Code Fellows 301 class. (i.e. What's your problem domain?) -->
+This mobile app displays a list of books from our database and allows users to add new books.
 
 ## Getting Started
 npm install

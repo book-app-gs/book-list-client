@@ -6,7 +6,6 @@ var __API_URL__ = 'http://localhost:3000';
     
     var newBook = {};
 
-
     newBook.initNewBookPage = () => {
         $('.body-container').hide();
         $('.book-new').show();
