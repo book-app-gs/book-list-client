@@ -6,9 +6,15 @@ var __API_URL__ = 'http://localhost:3000';
     
     var bookView = {};
 
+    bookView.toggleIndex = () => {
+        console.log('hiding container and showing bookview');
+        $('.container').hide();
+        $('.book-view').show();
+        app.Book.all.map(a => $('#book-list').append(a.toHtml()));
+    }
+
     bookView.initIndexPage = () => {
-        console.log('app-' , app)
-        Book.all.forEach(a => $('#books').append(a.toHtml()));
+        bookView.toggleIndex();
     }
     module.bookView = bookView; 
 })(app);
