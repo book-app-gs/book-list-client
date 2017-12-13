@@ -32,5 +32,24 @@ var __API_URL__ = 'http://localhost:3000';
     )
     .catch(app.errorView.errorCallback)
   };
+
+  Book.fetchOne = (callback) => {
+    console.log('inside fetchone-');
+    $.get(`${__API_URL__}/api/v1/books/${this.book_id}`)
+    .then(
+      function(results) {
+        console.log(results);
+        if (callback) callback();
+      }
+    )
+    .catch(app.errorView.errorCallback)
+  };
+
+  Book.prototype.insertRecord = function(callback) {
+    $.post('${__API_URL__}/add', {title: this.title, author: this.author, isbn: this.isbn, image_url: this.image_url, description: this.description})
+      .then(console.log)
+      .then(callback);
+  };
+
   module.Book = Book;
 })(app);
