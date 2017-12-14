@@ -42,6 +42,12 @@
     max-height: 350px;
     overflow: hidden;
 }
+.image-holder.full {
+    overflow: visible;
+    max-height: inherit;
+    max-width: 800px;
+    margin: auto;
+}
 img.book-image {
     width: 100%;
     margin-bottom: 2rem;

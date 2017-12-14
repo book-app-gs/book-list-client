@@ -16,39 +16,54 @@ var __API_URL__ = 'http://localhost:3000';
     let template = Handlebars.compile($('#book-list-template').text());
     return template(this);
   };
+
+  Book.prototype.toHtmlDetails = function() {
+    let template = Handlebars.compile($('#book-details-template').text());
+    return template(this);
+  };  
   
   Book.loadAll = rawData => {  
     rawData.forEach(BookObject => Book.all.push(new Book(BookObject)))
   };
   
-  Book.fetchAll = callback => {
-    $.get(`${__API_URL__}/api/v1/books`)
-    .then(
-      function(results) {
-        Book.loadAll(results);
-        console.log(results);
-        callback()
-      }
-    )
-    .catch(app.errorView.errorCallback)
-  };
+  function errorCallback(err) {
+    console.error(err);
+    module.errorView.initErrorPage(err);
+  }
 
-  Book.fetchOne = (callback) => {
-    console.log('inside fetchone-');
-    $.get(`${__API_URL__}/api/v1/books/${this.book_id}`)
-    .then(
-      function(results) {
-        console.log(results);
-        if (callback) callback();
-      }
-    )
-    .catch(app.errorView.errorCallback)
-  };
+  Book.fetchAll = callback => {
+    console.log('fetching all...');
+    $.get(`${__API_URL__}/api/v1/books`)
+      .then(Book.loadAll)
+      .then(callback)
+      .catch(errorCallback);
+  }
+
+  // Book.fetchOne = (callback) => {
+  //   console.log('inside fetchone-');
+  //   $.get(`${__API_URL__}/api/v1/books/${this.book_id}`)
+  //   .then(
+  //     function(results) {
+  //       console.log(results);
+  //       if (callback) callback();
+  //     }
+  //   )
+  //   .catch(app.errorView.errorCallback)
+  // };
+
+  Book.fetchOne = (ctx, callback) => {
+    console.log('inside fetch one...');
+    $.get(`${__API_URL__}/api/v1/books/${ctx.params.book_id}`)
+      .then(results => ctx.book =results[0])
+      .then(callback)
+      .catch(errorCallback);
+  }
 
   Book.prototype.insertRecord = function(callback) {
-    $.post('${__API_URL__}/add', {title: this.title, author: this.author, isbn: this.isbn, image_url: this.image_url, description: this.description})
-      .then(console.log)
-      .then(callback);
+    //$.post('${__API_URL__}/v1/books', {title: this.title, author: this.author, isbn: this.isbn, image_url: this.image_url, description: this.description})
+    $.post(`${__API_URL__}/api/v1/books`, callback)
+      .then(console.log('inserting record'))
+      .then(() => page('/'))
   };
 
     Book.create = book => {
@@ -56,5 +71,7 @@ var __API_URL__ = 'http://localhost:3000';
       .then(() => page('/'))
       .catch(errorCallback)
     }
+
+
   module.Book = Book;
 })(app);
