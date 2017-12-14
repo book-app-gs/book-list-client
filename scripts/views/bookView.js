@@ -20,12 +20,15 @@ var __API_URL__ = 'http://localhost:3000';
 
     // show one book
     bookView.initDetailPage = function(ctx) {
-        console.log('showing details')
+        console.log('ctx content', ctx)
         $('.body-container').hide();
         $('.book-details').show();
-        // $('.book-details').empty();
+        $('.book-details').empty();
+        console.log($('.book-details'))
         // app.Book.all.map(a => $('#book-list').append(a.toHtml()));
-        app.Book.all.map(book => $('.book-details').append(book.toHtmlDetails()));
+        // app.Book.all.map(book => $('.book-details').append(book.toHtmlDetails()));
+
+        $('.book-details').append(app.Book.toHtmlDetails(ctx));
         // let template = Handlebars.compile($('#book-detail-template').text());
         // $('.book-details').append(template(ctx));
     }
