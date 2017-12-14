@@ -111,13 +111,19 @@ img.book-image {
   .btn {
     border-radius: .5rem;
     padding: 1rem 3rem;
-    position: absolute;
+    /* position: absolute; */
     right: 1rem;
     font-size: 1.5rem;
     bottom: 1rem;
     text-decoration: none;
     color: white;
+    display:block;
+    text-align: center;
+    margin: 1rem; 
   }
+
+
+
   .submit-holder {
       text-align: right;
   }

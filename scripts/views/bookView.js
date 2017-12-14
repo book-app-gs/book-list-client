@@ -36,13 +36,17 @@ var __API_URL__ = 'http://localhost:3000';
     }
 
     bookView.initUpdateFormPage = function(ctx) {
-        console.log('updating book', ctx.book);
         $('.body-container').hide();
         $('.book-update').show();
-        $("input[name='title']").value = ctx.book.title;
-       // $('#update-book-form').on('submit', bookView.submit);
+        $("input[name*='title']").val(ctx.book.title);
+        $("input[name*='author']").val(ctx.book.author);
+        $("input[name*='isbn']").val(ctx.book.isbn);
+        $("input[name*='url']").val(ctx.book.image_url);
+        $("textarea[name*='description']").val(ctx.book.description);
         
+        $('#update-book-form').on('submit', app.Book.update(ctx, bookView.initDetailPage));    
     }
+
     bookView.submit = event => {
         event.preventDefault();
         console.log('listening to form', event.target.title);
