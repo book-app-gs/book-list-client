@@ -55,6 +55,40 @@ var __API_URL__ = 'http://localhost:3000';
       .then(() => page('/'))
   };
 
+  Book.destroy = (ctx, callback) => {
+    console.log('inside destory');
+    $.ajax({
+      url: `${__API_URL__}/api/v1/books/${ctx.params.book_id}`,
+      method: 'DELETE'
+    })
+      .then(results => ctx.book =results[0])
+      .then(callback)
+      .catch(errorCallback);
+    
+    // $.get(`${__API_URL__}/api/v1/books/delete/${ctx.params.book_id}`)
+    //   .then(results => ctx.book =results[0])
+    //   .then(callback)
+    //   .catch(errorCallback);
+    }
+
+    Book.update = (ctx, callback) => {
+      console.log('inside update');
+      $.ajax({
+        url: `${__API_URL__}/api/v1/books/${ctx.params.book_id}`,
+        method: 'PUT',
+        data: {
+          title: ctx.title,
+          author: ctx.author,
+          isbn: ctx.isbn,
+          url: ctx.url,
+          description: ctx.description
+        }
+      })
+        .then(callback)
+        .catch(errorCallback);
+    }
+  
+
     Book.create = book => {
       $.post(`${__API_URL__}/api/v1/books`, book)
       .then(() => page('/'))
