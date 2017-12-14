@@ -18,3 +18,9 @@
     background-size: contain;
     top: 2rem;
 }
+
+.book-view-details {
+    background: #c72b2b;
+    text-decoration: none;
+    color: white;
+}
