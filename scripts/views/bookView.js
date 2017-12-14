@@ -35,9 +35,17 @@ var __API_URL__ = 'http://localhost:3000';
         
     }
 
+    bookView.initUpdateFormPage = function(ctx) {
+        console.log('updating book', ctx.book);
+        $('.body-container').hide();
+        $('.book-update').show();
+        $("input[name='title']").value = ctx.book.title;
+       // $('#update-book-form').on('submit', bookView.submit);
+        
+    }
     bookView.submit = event => {
         event.preventDefault();
-        console.log('listening to form');
+        console.log('listening to form', event.target.title);
         let book = new app.Book({
             title: event.target.title.value,
             author: event.target.author.value,

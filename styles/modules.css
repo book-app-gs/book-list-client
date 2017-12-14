@@ -108,13 +108,15 @@ img.book-image {
   .book-description {
     line-height: 2rem;
   }
-  .book-view-details {
+  .btn {
     border-radius: .5rem;
     padding: 1rem 3rem;
     position: absolute;
     right: 1rem;
     font-size: 1.5rem;
     bottom: 1rem;
+    text-decoration: none;
+    color: white;
   }
   .submit-holder {
       text-align: right;
