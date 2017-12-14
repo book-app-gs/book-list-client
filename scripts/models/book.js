@@ -16,11 +16,6 @@ var __API_URL__ = 'http://localhost:3000';
     let template = Handlebars.compile($('#book-list-template').text());
     return template(this);
   };
-
-  Book.prototype.toHtmlDetails = function() {
-    let template = Handlebars.compile($('#book-details-template').text());
-    return template(this);
-  };  
   
   Book.loadAll = rawData => {  
     rawData.forEach(BookObject => Book.all.push(new Book(BookObject)))
