@@ -39,22 +39,11 @@ var __API_URL__ = 'http://localhost:3000';
       .catch(errorCallback);
   }
 
-  // Book.fetchOne = (callback) => {
-  //   console.log('inside fetchone-');
-  //   $.get(`${__API_URL__}/api/v1/books/${this.book_id}`)
-  //   .then(
-  //     function(results) {
-  //       console.log(results);
-  //       if (callback) callback();
-  //     }
-  //   )
-  //   .catch(app.errorView.errorCallback)
-  // };
-
   Book.fetchOne = (ctx, callback) => {
-    console.log('inside fetch one...');
+    console.log('inside fetch one... ctx param next', ctx.params.book_id);
     $.get(`${__API_URL__}/api/v1/books/${ctx.params.book_id}`)
       .then(results => ctx.book =results[0])
+      .then(console.log('inside the fetch query'))
       .then(callback)
       .catch(errorCallback);
   }
@@ -71,7 +60,6 @@ var __API_URL__ = 'http://localhost:3000';
       .then(() => page('/'))
       .catch(errorCallback)
     }
-
 
   module.Book = Book;
 })(app);
