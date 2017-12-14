@@ -25,10 +25,12 @@ var __API_URL__ = 'http://localhost:3000';
     }
 
     bookView.initAddPage = function() {
+        console.log('building book');
         $('.body-container').hide();
         $('.book-new').show();
         $('#new-book-form').on('submit', function(event){
             event.preventDefault();
+            console.log('listening to form');
             let book = {
                 title: event.target.title.value,
                 author: event.target.author.value,
@@ -37,6 +39,7 @@ var __API_URL__ = 'http://localhost:3000';
                 description: event.target.description.value
             }
         })
+        Book.create(book);
     }
     
     module.bookView = bookView; // keep at bottom
