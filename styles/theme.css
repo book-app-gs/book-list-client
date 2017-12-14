@@ -24,3 +24,6 @@
     text-decoration: none;
     color: white;
 }
+.book-view-details:hover {
+    background: #b32323;
+}

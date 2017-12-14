@@ -61,7 +61,7 @@ var __API_URL__ = 'http://localhost:3000';
 
   Book.prototype.insertRecord = function(callback) {
     //$.post('${__API_URL__}/v1/books', {title: this.title, author: this.author, isbn: this.isbn, image_url: this.image_url, description: this.description})
-    $.post('${__API_URL__}/v1/books', callback)
+    $.post(`${__API_URL__}/api/v1/books`, callback)
       .then(console.log('inserting record'))
       .then(() => page('/'))
   };
