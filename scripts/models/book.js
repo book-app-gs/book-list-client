@@ -16,11 +16,6 @@ var __API_URL__ = 'http://localhost:3000';
     let template = Handlebars.compile($('#book-list-template').text());
     return template(this);
   };
-
-  Book.prototype.toHtmlDetails = function() {
-    let template = Handlebars.compile($('#book-details-template').text());
-    return template(this);
-  };  
   
   Book.loadAll = rawData => {  
     rawData.forEach(BookObject => Book.all.push(new Book(BookObject)))
@@ -40,7 +35,7 @@ var __API_URL__ = 'http://localhost:3000';
   }
 
   Book.fetchOne = (ctx, callback) => {
-    console.log('inside fetch one... ctx param next', ctx.params.book_id);
+    console.log('inside fetch one... ctx param next', ctx);
     $.get(`${__API_URL__}/api/v1/books/${ctx.params.book_id}`)
       .then(results => ctx.book =results[0])
       .then(console.log('inside the fetch query'))

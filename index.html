@@ -20,7 +20,7 @@
             <div class="book-info">
                 <h3 class="title">{{title}}</h3>
                 <h4 class="author">{{author}}</h4>
-                <a class="book-view-details" href=/books/{{book_id}}>view details</a>
+                <a class="btn" href=/books/{{book_id}}>view details</a>
                 <!-- <a href=/books/{{book_id}}>also link</a> -->
             </div>
         </div>        
@@ -35,6 +35,8 @@
                 <h4 class="author">{{author}}</h4>
                 <h4 class="isbn">{{isbn}}</h4>
                 <h4 class="description">{{description}}</h4>
+                <a class="btn" id="update" data-id={{book_id}} href=/books/{{book_id}}/update>Update</a>
+                <!-- <a class="btn" id="delete" data-id={{book_id}} href=/books/admin>Delete</a>                 -->
             </div>
         </div>        
     </script>
@@ -55,6 +57,7 @@
                 <ul>
                 <li class="tab" data-content="home"><a href="/">View All Books</a></li>
                 <li class="tab" data-content="new"><a href="/books/add">Add A New Book</a></li>
+                <li class="tab" data-content="update"><a href="/books/update">Update A Book</a></li>            
                 </ul>
             </div>
         </section>
@@ -64,22 +67,34 @@
     <div class="body-container book-new">
         <h3 class="book-title">add a new book</h3>
         <form id="new-book-form">
-            <input type="text" placeholder="title" id="title" />
-            <input type="text" placeholder="author" id="author" />
-            <input type="text" placeholder="isbn" id="isbn" />
-            <input type="text" placeholder="url" id="url" />
-            <textarea id="description" placeholder="description..." ></textarea>
+            <input type="text" placeholder="title" name="title" />
+            <input type="text" placeholder="author" name="author" />
+            <input type="text" placeholder="isbn" name="isbn" />
+            <input type="text" placeholder="image url" name="url" />
+            <textarea name="description" placeholder="description..." ></textarea>
             <div class="submit-holder"><input type="submit" value="submit" class="book-submit"></div>
         </form>
     </div>
     <!-- end new book view -->
 
+    <!-- start update book view -->
+    <div class="body-container book-update">
+        <h3 class="book-title">Update a new book</h3>
+        <form id="update-book-form">
+            <input type="text" placeholder="title" name="title" />
+            <input type="text" placeholder="author" name="author" />
+            <input type="text" placeholder="isbn" name="isbn" />
+            <input type="text" placeholder="url" name="url" />
+            <textarea name="description" placeholder="description..." ></textarea>
+            <div class="submit-holder"><input type="submit" value="submit" class="book-submit"></div>
+        </form>
+    </div>
+    <!-- end update book view -->
 
     <!-- start book details -->
     <div class="body-container book-details">
-        
     </div>
-        <!-- end book details -->
+    <!-- end book details -->
     
         <!-- start all books -->
     <div class="body-container book-all">

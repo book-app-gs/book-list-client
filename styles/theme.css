@@ -19,11 +19,10 @@
     top: 2rem;
 }
 
-.book-view-details {
+.btn {
     background: #c72b2b;
-    text-decoration: none;
-    color: white;
+
 }
-.book-view-details:hover {
+.btn:hover {
     background: #b32323;
 }

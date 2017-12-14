@@ -20,17 +20,11 @@ var __API_URL__ = 'http://localhost:3000';
 
     // show one book
     bookView.initDetailPage = function(ctx) {
-        console.log('ctx content', ctx)
         $('.body-container').hide();
+        $('.book-details').empty();        
         $('.book-details').show();
-        $('.book-details').empty();
-        console.log($('.book-details'))
-        // app.Book.all.map(a => $('#book-list').append(a.toHtml()));
-        // app.Book.all.map(book => $('.book-details').append(book.toHtmlDetails()));
-
-        $('.book-details').append(app.Book.toHtmlDetails(ctx));
-        // let template = Handlebars.compile($('#book-detail-template').text());
-        // $('.book-details').append(template(ctx));
+        let template = Handlebars.compile($('#book-details-template').text());
+        $('.book-details').append(template(ctx));
     }
 
     bookView.initAddPage = function() {
@@ -41,9 +35,17 @@ var __API_URL__ = 'http://localhost:3000';
         
     }
 
+    bookView.initUpdateFormPage = function(ctx) {
+        console.log('updating book', ctx.book);
+        $('.body-container').hide();
+        $('.book-update').show();
+        $("input[name='title']").value = ctx.book.title;
+       // $('#update-book-form').on('submit', bookView.submit);
+        
+    }
     bookView.submit = event => {
         event.preventDefault();
-        console.log('listening to form');
+        console.log('listening to form', event.target.title);
         let book = new app.Book({
             title: event.target.title.value,
             author: event.target.author.value,
