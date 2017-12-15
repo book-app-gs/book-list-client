@@ -25,10 +25,25 @@ var __API_URL__ = 'http://localhost:3000';
         $('.book-details').append(template(ctx));
     }
 
+    // add book
     bookView.initAddPage = function() {
         $('.body-container').hide();
         $('.book-new').show();
         $('#new-book-form').on('submit', bookView.submit);
+    }
+
+    // search form
+    bookView.initSearchFormPage = function() {
+        $('.body-container').hide();
+        $('.search-view').show();
+        $('#search-form').on('submit', bookView.submit);
+    }
+
+    // show search results
+    bookView.initSearchResultsPage = function() {
+        $('.body-container').hide();
+        $('.search-result-container').show();
+        $('.detail-button').on('submit', bookView.submit);
     }
 
     bookView.submit = event => {
