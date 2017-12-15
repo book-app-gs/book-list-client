@@ -81,6 +81,11 @@ var __API_URL__ = 'http://localhost:3000';
         .catch(errorCallback);
     }
 
+    Book.find = (book) => {
+      $.get(`${__API_URL__}/api/v1/books/find`,`isbn=${book.isbn}`)
+      .then()
+    }
+
 
   module.Book = Book;
 })(app);
