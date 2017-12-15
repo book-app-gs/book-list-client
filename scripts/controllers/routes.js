@@ -13,6 +13,10 @@ page('/books/add',
 page('/books/admin',
     app.adminView.initAdminPage);
 
+page('/books/search', 
+    (ctx, next) => app.Book.initSearchFormPage(ctx, next), 
+    (ctx) => app.Book.initSearchResultsPage(ctx));
+
 page('/books/:book_id', 
     ctx => app.Book.fetchOne(ctx, app.bookView.initDetailPage));
 
@@ -24,7 +28,6 @@ page('/books/:book_id/update',
 page('/books/:book_id/delete', 
     (ctx, next) => app.Book.fetchOne(ctx, next), 
     (ctx) => app.Book.destroy(ctx));
-
 
 //page('/books/:book_id/update', ctx  => app.Book.fetchOne(ctx, app.bookView.initUpdateFormPage());
 //the above looses the context information
