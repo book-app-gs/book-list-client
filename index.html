@@ -55,15 +55,15 @@
             <div class="main-nav">
                 <div class="icon-menu"></div>
                 <ul>
-                <li class="tab" data-content="home"><a href="/">View All Books</a></li>
-                <li class="tab" data-content="new"><a href="/books/add">Add A New Book</a></li>
-                <li class="tab" data-content="update"><a href="/books/update">Update A Book</a></li>            
+                <li class="tab"><a href="/">View All Books</a></li>
+                <li class="tab"><a href="/books/add">Add A New Book</a></li>
+                <li class="tab"><a href="/books/admin">Admin</a></li>            
                 </ul>
             </div>
         </section>
     </header>
 
-    <!-- start new book view -->
+    <!-- start add book form -->
     <div class="body-container book-new">
         <h3 class="book-title">add a new book</h3>
         <form id="new-book-form">
@@ -75,9 +75,9 @@
             <div class="submit-holder"><input type="submit" value="submit" class="book-submit"></div>
         </form>
     </div>
-    <!-- end new book view -->
+    <!-- end add book form -->
 
-    <!-- start update book view -->
+    <!-- start update book form -->
     <div class="body-container book-update">
         <h3 class="book-title">Update a new book</h3>
         <form id="update-book-form">
@@ -89,14 +89,24 @@
             <div class="submit-holder"><input type="submit" value="submit" class="book-submit"></div>
         </form>
     </div>
-    <!-- end update book view -->
+    <!-- end update book form -->
+
+    <!-- start admin form -->
+    <div class="body-container admin-verify">
+            <h3 class="admin-title">Please enter your passphrase</h3>
+            <form id="admin-form">
+                <input type="password" placeholder="4 digits" pattern="\d{4}" name="passphrase" />
+                <div class="submit-holder"><input type="submit" value="submit" class="book-submit"></div>            
+            </form>
+    </div>
+    <!-- end admin form -->
 
     <!-- start book details -->
     <div class="body-container book-details">
     </div>
     <!-- end book details -->
     
-        <!-- start all books -->
+    <!-- start all books -->
     <div class="body-container book-all">
         <div id="error-message-holder"></div>
         <section id="book-list">
@@ -116,7 +126,9 @@
     <script src="scripts/views/bookView.js"></script>
     <script src="scripts/views/errorView.js"></script>
     <script src="scripts/views/menuView.js"></script>
+    <script src="scripts/views/adminView.js"></script>
     <script src="scripts/controllers/routes.js"></script>
+    
     <script>
         $(document).ready(function(){
             app.Book.fetchAll(app.bookView.initIndexPage);

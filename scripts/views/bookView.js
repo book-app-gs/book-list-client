@@ -7,7 +7,6 @@ var __API_URL__ = 'http://localhost:3000';
     var bookView = {};
 
     bookView.toggleIndex = () => {
-        console.log('toggling index');
         $('.body-container').hide();
         $('.book-all').show();
         app.Book.all.map(a => $('#book-list').append(a.toHtml()));
@@ -28,11 +27,9 @@ var __API_URL__ = 'http://localhost:3000';
     }
 
     bookView.initAddPage = function() {
-        console.log('building book');
         $('.body-container').hide();
         $('.book-new').show();
         $('#new-book-form').on('submit', bookView.submit);
-        
     }
 
     bookView.initUpdateFormPage = function(ctx) {
