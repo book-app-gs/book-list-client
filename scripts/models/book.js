@@ -61,7 +61,7 @@ var __API_URL__ = 'http://localhost:3000';
       url: `${__API_URL__}/api/v1/books/${ctx.params.book_id}`,
       method: 'DELETE'
     })
-      .then(results => ctx.book =results[0])
+      .then(() => page('/'))
       .then(callback)
       .catch(errorCallback);
     
