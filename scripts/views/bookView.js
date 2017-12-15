@@ -6,15 +6,14 @@ var __API_URL__ = 'http://localhost:3000';
     
     var bookView = {};
 
-    bookView.toggleIndex = () => {
+    //show all books
+    bookView.initIndexPage = () => { 
+        console.log('inside bookview init');
         $('.body-container').hide();
         $('.book-all').show();
+        $('#book-list').empty();
+        $('.book-count').text(app.Book.all.length);
         app.Book.all.map(a => $('#book-list').append(a.toHtml()));
-    }
-
-    //show all books
-    bookView.initIndexPage = () => {
-        bookView.toggleIndex();
     }
 
     // show one book
@@ -32,18 +31,6 @@ var __API_URL__ = 'http://localhost:3000';
         $('#new-book-form').on('submit', bookView.submit);
     }
 
-    bookView.initUpdateFormPage = function(ctx) {
-        $('.body-container').hide();
-        $('.book-update').show();
-        $("input[name*='title']").val(ctx.book.title);
-        $("input[name*='author']").val(ctx.book.author);
-        $("input[name*='isbn']").val(ctx.book.isbn);
-        $("input[name*='url']").val(ctx.book.image_url);
-        $("textarea[name*='description']").val(ctx.book.description);
-        
-        $('#update-book-form').on('submit', app.Book.update(ctx, bookView.initDetailPage));    
-    }
-
     bookView.submit = event => {
         event.preventDefault();
         console.log('listening to form', event.target.title);
@@ -56,9 +43,21 @@ var __API_URL__ = 'http://localhost:3000';
         });
 
         app.Book.create(book);
-        // app.Book.insertRecord();
-        window.location = '../';
+        // window.location = '../';
     }
-    
+
+    bookView.initUpdateFormPage = function(ctx, next) {
+        $('.body-container').hide();
+        $('.book-update').show();
+        $("input[name*='title']").val(ctx.book.title);
+        $("input[name*='author']").val(ctx.book.author);
+        $("input[name*='isbn']").val(ctx.book.isbn);
+        $("input[name*='url']").val(ctx.book.image_url);
+        $("textarea[name*='description']").val(ctx.book.description);
+        
+        $('#update-book-form').on('submit', app.Book.update(ctx));    
+    }
+
+
     module.bookView = bookView; // keep at bottom
 })(app);

@@ -18,7 +18,11 @@ var __API_URL__ = 'http://localhost:3000';
   };
   
   Book.loadAll = rawData => {  
-    rawData.forEach(BookObject => Book.all.push(new Book(BookObject)))
+  //  if (!(Book.all && Book.all.length))
+  // doing it this way doesnt refresh when you want to delete
+
+  Book.all = [];
+  {rawData.forEach(BookObject => Book.all.push(new Book(BookObject)))}
   };
   
   function errorCallback(err) {
@@ -26,8 +30,8 @@ var __API_URL__ = 'http://localhost:3000';
     module.errorView.initErrorPage(err);
   }
 
-  Book.fetchAll = callback => {
-    console.log('fetching all...');
+  Book.fetchAll = (ctx, callback) => {
+    console.log('fetching all...', callback);
     $.get(`${__API_URL__}/api/v1/books`)
       .then(Book.loadAll)
       .then(callback)
@@ -66,16 +70,17 @@ var __API_URL__ = 'http://localhost:3000';
     }
 
     Book.update = (ctx, callback) => {
-      console.log('inside update');
+      event.preventDefault(); 
+      console.log('inside update', ctx);
       $.ajax({
         url: `${__API_URL__}/api/v1/books/${ctx.params.book_id}`,
         method: 'PUT',
         data: {
-          title: ctx.title,
-          author: ctx.author,
-          isbn: ctx.isbn,
-          url: ctx.url,
-          description: ctx.description
+          title: ctx.book.title,
+          author: ctx.book.author,
+          isbn: ctx.book.isbn,
+          url: ctx.book.url,
+          description: ctx.book.description
         }
       })
         .then(callback)

@@ -1,12 +1,18 @@
 body {
+    display:block;  
     margin: 0;
-    font-family: sans-serif;
     color: #4a4a4a;
     overflow-x: hidden;
+    font-size: 1rem;
+    line-height: 2rem;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-weight: normal;
 }
 
 ul {
     list-style: none;
+    z-index: 100;
 }
 
 input, textarea {

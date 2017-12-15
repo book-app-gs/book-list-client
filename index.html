@@ -29,11 +29,12 @@
     <!-- book details template -->
     <script id="book-details-template" type="text/x-handlebars-template">
         <div class="book detail-holder">
+            <div class="book-info"></div>
+            <h3 class="title">{{title}}</h3>
+            <h4 class="author">{{author}}</h4>
+            <h4 class="isbn">{{isbn}}</h4>
             <div class="image-holder full"><img class="book-image" src={{image_url}}></div>
-            <div class="book-info">
-                <h3 class="title">{{title}}</h3>
-                <h4 class="author">{{author}}</h4>
-                <h4 class="isbn">{{isbn}}</h4>
+
                 <h4 class="description">{{description}}</h4>
                 <a class="btn" id="update" data-id={{book_id}} href=/books/{{book_id}}/update>Update</a>
                 <a class="btn" id="delete" data-id={{book_id}} href=/books/{{book_id}}/delete>Delete</a>                
@@ -109,8 +110,11 @@
     <!-- start all books -->
     <div class="body-container book-all">
         <div id="error-message-holder"></div>
+        <section class="book-count"> 
+            Book Count:<span class="book-count"></span>
+        </section>
         <section id="book-list">
-            <div id="book-count">Book Count Here...</div>
+            <!-- <div id="book-count">Book Count Here...</div> -->
         </section>
         <section id="footer">
             <span class="icon-github"></span>
@@ -131,17 +135,11 @@
     
     <script>
         $(document).ready(function(){
-            app.Book.fetchAll(app.bookView.initIndexPage);
-            app.Book.fetchAll(app.menuView.listenMenu);
+    //s-why?       app.Book.fetchAll(app.bookView.initIndexPage);
+    //s-why?        app.Book.fetchAll(app.menuView.listenMenu);
+            app.menuView.listenMenu();
+
         });
     </script>
-    <!-- <script>
-        $.get('http://localhost:3000/api/v1/books')
-        .then(
-            function(results) {
-            console.log("here are results", results);
-            }
-        )
-        </script> -->
 </body>
 </html>

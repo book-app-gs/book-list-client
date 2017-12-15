@@ -5,18 +5,11 @@ var __API_URL__ = 'http://localhost:3000';
 (function (module) { 
     
     var newBook = {};
-
-    newBook.initNewBookPage = () => {
-        $('.body-container').hide();
-        $('.book-new').show();
-        app.Book.all.map(a => $('#book-list').append(a.toHtml()));
-        $('#new-form').on('change', 'input, textarea', newBook.create);
-        $('#new-form').on('submit', newBook.submit);
-      };
     
-      newBook.create = () => {
+    newBook.create = () => {
         $('#books').empty();
-    
+        event.preventDefault();
+
         let book = {
             title: e.target.title.value,
             description: e.target.description.value,
@@ -24,11 +17,9 @@ var __API_URL__ = 'http://localhost:3000';
             contact: e.target.contact.value,
             status: e.target.status.value
         }
-        
-    
-        $('#books').append(book.toHtml());
-      };
-    
+    //s-why?    $('#books').append(book.toHtml());
+    };
+
     newBook.submit = event => {
         event.preventDefault();
         let book = new app.Book({
@@ -44,8 +35,12 @@ var __API_URL__ = 'http://localhost:3000';
         page('/');
 
     }    
-    newBook.initIndexPage = () => {
-        newBook.initNewBookPage();
+    newBook.initNewBookPage = () => {
+        $('.body-container').hide();
+        $('.book-new').show();
+    //s-why?    app.Book.all.map(a => $('#book-list').append(a.toHtml()));
+        $('#new-form').on('change', 'input, textarea', newBook.create);
+        $('#new-form').on('submit', newBook.submit);
     }
     
     module.newBook = newBook; // keep at bottom

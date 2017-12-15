@@ -13,31 +13,35 @@
 .section-title {
     text-decoration: underline;
     color: #4a4a4a;
-    font-weight: normal;
 }
 
 .book {
     border-radius: 1rem 1rem 0 0;
-    background: #9b9b9b;
+    background: #f3f1f1;
     margin-bottom: 4rem;
 }
 .book-info {
-    background: #4a4a4a;
+    color: grey;
+    font-weight: normal;
     padding: 1rem;
     position: relative;
 }
 
 .title {
-    color: #d8d8d8;
-    font-weight: normal;
-    font-size: 2rem;
+    text-decoration: underline; 
+    margin: 0;
 }
+
 .author {
-    color: #d8d8d8;
-    font-weight: normal;
-    font-size: 1.5rem;
     font-style: italic;
+    float: left;
 }
+
+.isbn {
+    font-style: italic; 
+    float: right;
+}
+
 .image-holder {
     max-height: 350px;
     overflow: hidden;
@@ -75,13 +79,13 @@ img.book-image {
     font-size: 3rem;
     margin: 1rem;
   }
-  .main-nav:hover ul{
+.main-nav:hover ul{
     /* display: block; */
-  }
-  .main-nav ul {
+}
+
+.main-nav ul {
     display: none;
     padding: 0;
-    font-size: 1.5rem;
     line-height: 3.5rem;
     color: white;
     position: absolute;
@@ -90,51 +94,39 @@ img.book-image {
     background: rgba(0, 0, 0, 0.90);
     margin: 0;
     padding: 1rem;
-  }
-   .main-nav ul li {
+}
 
-   }
-  .main-nav ul li a {
+.main-nav ul li a {
     text-decoration: none;
     color: #fff;
-  }
+}
 
 
   /* modules book-details */
-  .book-title {text-decoration: underline; margin: 0; font-weight: normal;font-size: 1.5rem;}
-  .book-author {font-style: italic;display: inline-block; float: left;}
-  .book-isbn {font-style: italic;display: inline-block; float: right;}
-  .book-image {width: 100%;}
-  .book-description {
-    line-height: 2rem;
-  }
-  .btn {
+  
+.btn {
     border-radius: .5rem;
     padding: 1rem 3rem;
-    /* position: absolute; */
+    clear: both;
     right: 1rem;
-    font-size: 1.5rem;
     bottom: 1rem;
-    text-decoration: none;
     color: white;
     display:block;
     text-align: center;
     margin: 1rem; 
-  }
+}
 
-
-
-  .submit-holder {
+.submit-holder {
       text-align: right;
-  }
-  .book-submit {
+}
+
+.book-submit {
     border-radius: .5rem;
     padding: 1rem 3rem;
-    font-size: 1.5rem;
     background: #4a4a4a;
     border-radius: .5rem;
     color: white;
-  }
+}
 
 #new-book-form {
     margin-top: 2rem;
