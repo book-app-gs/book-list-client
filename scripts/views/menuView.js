@@ -11,5 +11,6 @@ var __API_URL__ = 'http://localhost:3000';
             $('.main-nav ul').toggle();
         });
     }
+    
     module.menuView = menuView; 
 })(app);

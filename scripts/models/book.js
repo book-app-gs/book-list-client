@@ -18,7 +18,11 @@ var __API_URL__ = 'http://localhost:3000';
   };
   
   Book.loadAll = rawData => {  
-    rawData.forEach(BookObject => Book.all.push(new Book(BookObject)))
+  //  if (!(Book.all && Book.all.length))
+  // doing it this way doesnt refresh when you want to delete
+
+  Book.all = [];
+  {rawData.forEach(BookObject => Book.all.push(new Book(BookObject)))}
   };
   
   function errorCallback(err) {
@@ -27,7 +31,7 @@ var __API_URL__ = 'http://localhost:3000';
   }
 
   Book.fetchAll = callback => {
-    console.log('fetching all...');
+    console.log('fetching all...', callback);
     $.get(`${__API_URL__}/api/v1/books`)
       .then(Book.loadAll)
       .then(callback)
