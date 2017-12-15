@@ -29,24 +29,24 @@ var __API_URL__ = 'http://localhost:3000';
     bookView.initAddPage = function() {
         $('.body-container').hide();
         $('.book-new').show();
-        $('#new-book-form').on('submit', bookView.submit);
+        $('#new-book-form').on('submit', bookView.addBook);
     }
 
     // search form
     bookView.initSearchFormPage = function() {
         $('.body-container').hide();
         $('.search-view').show();
-        $('#search-form').on('submit', bookView.submit);
+        $('#search-form').on('submit', bookView.searchResults);
     }
 
     // show search results
     bookView.initSearchResultsPage = function() {
         $('.body-container').hide();
         $('.search-result-container').show();
-        $('.detail-button').on('submit', bookView.submit);
+        $('.detail-button').on('submit', bookView.searchResults);
     }
 
-    bookView.submit = event => {
+    bookView.addBook = event => {
         event.preventDefault();
         console.log('listening to form', event.target.title);
         let book = new app.Book({
@@ -57,10 +57,26 @@ var __API_URL__ = 'http://localhost:3000';
             description: event.target.description.value
         });
 
-        app.Book.create(book);
-        // window.location = '../';
+        app.Book.insertRecord(book);
+        page('/');
     }
 
+    bookView.updateBook = event => {
+        event.preventDefault();
+        console.log('listening to form', event);
+        let book = new app.Book({
+            title: event.target.title.value,
+            author: event.target.author.value,
+            isbn: event.target.isbn.value,
+            url: event.target.url.value,
+            description: event.target.description.value,
+            book_id: event.target.book_id,
+        });
+        
+        console.log('book-',book)
+        app.Book.update(book);
+        page('/');
+    }
     bookView.initUpdateFormPage = function(ctx, next) {
         $('.body-container').hide();
         $('.book-update').show();
@@ -70,7 +86,8 @@ var __API_URL__ = 'http://localhost:3000';
         $("input[name*='url']").val(ctx.book.image_url);
         $("textarea[name*='description']").val(ctx.book.description);
         
-        $('#update-book-form').on('submit', app.Book.update(ctx));    
+        $('#update-book-form').on('submit', bookView.updateBook);    
+    
     }
 
 
