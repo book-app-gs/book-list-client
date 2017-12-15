@@ -46,9 +46,9 @@ var __API_URL__ = 'http://localhost:3000';
       .catch(errorCallback);
   }
 
-  Book.prototype.insertRecord = function(callback) {
+  Book.insertRecord = function(book) {
     //$.post('${__API_URL__}/v1/books', {title: this.title, author: this.author, isbn: this.isbn, image_url: this.image_url, description: this.description})
-    $.post(`${__API_URL__}/api/v1/books`, callback)
+    $.post(`${__API_URL__}/api/v1/books`, book)
       .then(console.log('inserting record'))
       .then(() => page('/'))
   };
@@ -62,37 +62,25 @@ var __API_URL__ = 'http://localhost:3000';
       .then(() => page('/'))
       .then(callback)
       .catch(errorCallback);
-    
-    // $.get(`${__API_URL__}/api/v1/books/delete/${ctx.params.book_id}`)
-    //   .then(results => ctx.book =results[0])
-    //   .then(callback)
-    //   .catch(errorCallback);
     }
 
-    Book.update = (ctx, callback) => {
-      event.preventDefault(); 
-      console.log('inside update', ctx);
+    Book.update = (book, callback) => {
+      console.log('inside update', book);
       $.ajax({
-        url: `${__API_URL__}/api/v1/books/${ctx.params.book_id}`,
+        url: `${__API_URL__}/api/v1/books/${book.book_id}`,
         method: 'PUT',
         data: {
-          title: ctx.book.title,
-          author: ctx.book.author,
-          isbn: ctx.book.isbn,
-          url: ctx.book.url,
-          description: ctx.book.description
+          title: book.title,
+          author: book.author,
+          isbn: book.isbn,
+          url: book.url,
+          description: book.description
         }
       })
         .then(callback)
         .catch(errorCallback);
     }
-  
 
-    Book.create = book => {
-      $.post(`${__API_URL__}/api/v1/books`, book)
-      .then(() => page('/'))
-      .catch(errorCallback)
-    }
 
   module.Book = Book;
 })(app);
