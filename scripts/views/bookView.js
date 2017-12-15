@@ -34,16 +34,18 @@ var __API_URL__ = 'http://localhost:3000';
 
     // search form
     bookView.initSearchFormPage = function() {
+        console.log('inside init search form')
         $('.body-container').hide();
         $('.search-view').show();
-        $('#search-form').on('submit', bookView.searchResults);
+        $('#search-form').on('submit', Book.find);
     }
 
     // show search results
-    bookView.initSearchResultsPage = function() {
+    bookView.initSearchResultsPage = function(ctx) {
         $('.body-container').hide();
         $('.search-result-container').show();
-        $('.detail-button').on('submit', bookView.searchResults);
+        ctx.responseText.map(a => $('#search-results').append(a.toHtml()));
+        // $('.detail-button').on('submit', bookView.);
     }
 
     bookView.addBook = event => {

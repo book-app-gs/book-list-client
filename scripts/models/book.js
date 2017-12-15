@@ -82,8 +82,10 @@ var __API_URL__ = 'http://localhost:3000';
     }
 
     Book.find = (book) => {
-      $.get(`${__API_URL__}/api/v1/books/find`,`isbn=${book.isbn}`)
-      .then()
+      let query = `{"inauthor":"${book.author}","isbn":"${book.isbn},"intitle":"${book.title}"}`;
+      console.log(query);
+      $.get(`${__API_URL__}/api/v1/books/find`,query)
+      .then(console.log('inside completed'))
     }
 
 
