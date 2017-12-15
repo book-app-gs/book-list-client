@@ -12,6 +12,7 @@ var __API_URL__ = 'http://localhost:3000';
         $('.body-container').hide();
         $('.book-all').show();
         $('#book-list').empty();
+        $('.book-count').text(app.Book.all.length);
         app.Book.all.map(a => $('#book-list').append(a.toHtml()));
     }
 
@@ -42,11 +43,10 @@ var __API_URL__ = 'http://localhost:3000';
         });
 
         app.Book.create(book);
-        // app.Book.insertRecord();
-        window.location = '../';
+        // window.location = '../';
     }
 
-    bookView.initUpdateFormPage = function(ctx) {
+    bookView.initUpdateFormPage = function(ctx, next) {
         $('.body-container').hide();
         $('.book-update').show();
         $("input[name*='title']").val(ctx.book.title);
@@ -55,7 +55,7 @@ var __API_URL__ = 'http://localhost:3000';
         $("input[name*='url']").val(ctx.book.image_url);
         $("textarea[name*='description']").val(ctx.book.description);
         
-        $('#update-book-form').on('submit', app.Book.update(ctx, bookView.initDetailPage));    
+        $('#update-book-form').on('submit', app.Book.update(ctx));    
     }
 
 

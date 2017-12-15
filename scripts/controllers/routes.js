@@ -1,10 +1,11 @@
 'use strict';
 
 //if you dont have ctx passed to fetAll - it breaks when you go from book details back to book view. Why ?
-//s-why? page('/', ctx => app.Book.fetchAll(app.bookView.initIndexPage(ctx)));
+//same with this- page('/', ctx => app.Book.fetchAll(app.bookView.initIndexPage(ctx)));
 
 page('/', 
-    ctx => app.Book.fetchAll(ctx, app.bookView.initIndexPage(ctx)));
+    (ctx, next) => app.Book.fetchAll(ctx, next),
+    (ctx) => app.bookView.initIndexPage(ctx));
 
 page('/books/add', 
     ctx => app.bookView.initAddPage(ctx));
@@ -17,7 +18,8 @@ page('/books/:book_id',
 
 page('/books/:book_id/update', 
     (ctx, next) => app.Book.fetchOne(ctx, next), 
-    (ctx) => app.bookView.initUpdateFormPage(ctx));
+    (ctx, next) => app.bookView.initUpdateFormPage(ctx, next),
+    (ctx) => app.bookView.initIndexPage(ctx));
 
 page('/books/:book_id/delete', 
     (ctx, next) => app.Book.fetchOne(ctx, next), 
