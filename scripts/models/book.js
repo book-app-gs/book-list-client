@@ -95,7 +95,5 @@ var __API_URL__ = 'http://localhost:3000';
   }
 
   
-
-
   module.Book = Book;
 })(app);

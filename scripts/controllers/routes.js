@@ -29,7 +29,6 @@ page('/books/:book_id/delete',
     (ctx, next) => app.Book.fetchOne(ctx, next), 
     (ctx) => app.Book.destroy(ctx));
 
-
 //page('/books/:book_id/update', ctx  => app.Book.fetchOne(ctx, app.bookView.initUpdateFormPage());
 //the above looses the context information
 
