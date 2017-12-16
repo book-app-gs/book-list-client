@@ -83,15 +83,10 @@ var __API_URL__ = 'http://localhost:3000';
     // passing the queryStr is requiring a long form ajax request instead of the one below that we tested from console
     // $.get(`${__API_URL__}/api/v1/books/find`,queryStr)
 
-    $.ajax({
-      url: `${__API_URL__}/api/v1/books/find`,
-      method: 'GET',
-      data: {
-        query: `{"inauthor":"${book.author}","isbn":"${book.isbn}","intitle":"${book.title}"}`,
-      }
-    })
+      $.get(`${__API_URL__}/api/v1/books/find`,book)
         .then(console.log('find executed'))
         .catch(errorCallback);
+
   }
 
   
