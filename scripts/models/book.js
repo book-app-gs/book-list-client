@@ -80,7 +80,6 @@ var __API_URL__ = 'http://localhost:3000';
   }
 
   Book.find = (book) => {
-
     $.get(`${__API_URL__}/api/v1/books/find`,book)
     .then(console.log('find executed'))
   }
