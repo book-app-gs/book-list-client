@@ -13,6 +13,10 @@ page('/books/add',
 page('/books/admin',
     app.adminView.initAdminPage);
 
+page('/books/search', 
+(ctx, next) => app.bookView.initSearchFormPage(ctx, next), 
+(ctx) => app.bookView.initSearchResultsPage(ctx));
+
 page('/books/:book_id', 
     ctx => app.Book.fetchOne(ctx, app.bookView.initDetailPage));
 
@@ -32,3 +36,5 @@ page('/books/:book_id/delete',
 page('*', '/');
 
 page();
+
+// Need to change form from retaining info if you go from update for tp add form

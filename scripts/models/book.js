@@ -31,7 +31,6 @@ var __API_URL__ = 'http://localhost:3000';
   }
 
   Book.fetchAll = (ctx, callback) => {
-    console.log('fetching all...', callback);
     $.get(`${__API_URL__}/api/v1/books`)
       .then(Book.loadAll)
       .then(callback)
@@ -39,7 +38,6 @@ var __API_URL__ = 'http://localhost:3000';
   }
 
   Book.fetchOne = (ctx, callback) => {
-    console.log('inside fetch one... ctx param next', ctx);
     $.get(`${__API_URL__}/api/v1/books/${ctx.params.book_id}`)
       .then(results => ctx.book =results[0])
       .then(callback)
@@ -64,28 +62,28 @@ var __API_URL__ = 'http://localhost:3000';
       .catch(errorCallback);
     }
 
-    Book.update = (book, callback) => {
-      console.log('inside update', book);
-      $.ajax({
-        url: `${__API_URL__}/api/v1/books/${book.book_id}`,
-        method: 'PUT',
-        data: {
-          title: book.title,
-          author: book.author,
-          isbn: book.isbn,
-          url: book.url,
-          description: book.description
-        }
-      })
+  Book.update = (book, callback) => {
+    $.ajax({
+      url: `${__API_URL__}/api/v1/books/${book.book_id}`,
+      method: 'PUT',
+      data: {
+        title: book.title,
+        author: book.author,
+        isbn: book.isbn,
+        url: book.url,
+        description: book.description,
+        book_id: book.book_id
+      }
+    })
         .then(callback)
         .catch(errorCallback);
-    }
+  }
 
-    Book.find = (book) => {
-      $.get(`${__API_URL__}/api/v1/books/find`,`isbn=${book.isbn}`)
-      .then()
-    }
+  Book.find = (book) => {
 
+    $.get(`${__API_URL__}/api/v1/books/find`,book)
+    .then(console.log('find executed'))
+  }
 
   module.Book = Book;
 })(app);
