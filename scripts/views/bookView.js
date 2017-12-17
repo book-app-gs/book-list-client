@@ -37,26 +37,29 @@ var __API_URL__ = 'http://localhost:3000';
         console.log('inside init search form')
         $('.body-container').hide();
         $('.search-view').show();
-        $('#search-form').on('submit', app.bookView.formdetails);
+        $('#search-form').on('submit', function(event) {;
+
+            event.preventDefault();
+            let book = new app.Book ({
+                title: event.target.title.value || '',
+                author: event.target.author.value || '',
+                isbn: event.target.isbn.value || '',
+            });
+
+            app.Book.find(book, bookView.initSearchResultsPage);
+        })
     }
 
     // show search results
     bookView.initSearchResultsPage = function(ctx) {
+        console.log('iniside search results display');
         $('.body-container').hide();
-        $('.search-result-container').show();
-        ctx.responseText.map(a => $('#search-results').append(a.toHtml()));
-        // $('.detail-button').on('submit', bookView.);
+        $('.search-result').show();
+        // ctx.responseText.map(a => $('#search-results').append(a.toHtml()));
+        app.Book.all.map(a => $('#search-results').append(a.toHtml()));
     }
 
-    bookView.formdetails = event => {
-        event.preventDefault();
-        let book = new app.Book({
-            title: event.target.title.value,
-            author: event.target.author.value,
-            isbn: event.target.isbn.value,
-        });
-        app.Book.find(book);
-    }
+
 
         bookView.addBook = event => {
         event.preventDefault();
@@ -77,9 +80,9 @@ var __API_URL__ = 'http://localhost:3000';
         let book = new app.Book({
             title: event.target.title.value,
             author: event.target.author.value,
-            isbn: event.target.isbn.value,
-            url: event.target.url.value,
-            description: event.target.description.value,
+            isbn: event.target.isbn.value || 0,
+            url: event.target.url.value || '',
+            description: event.target.description.value || '',
             book_id: event.target.book_id.value,
         }); 
         // ("input[name*='title']").val();
@@ -89,9 +92,6 @@ var __API_URL__ = 'http://localhost:3000';
         // $("textarea[name*='description']").val();
         // $("input[name*='book_id']").val()
 
-        if (!book.url) {book.url = ' '};
-        if (!book.isbn) {book.isbn = 0};
-        if (!book.description) {book.description = ' '};
         app.Book.update(book);
         page('/');
     }
