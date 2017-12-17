@@ -78,13 +78,15 @@ var __API_URL__ = 'http://localhost:3000';
         .then(callback)
         .catch(errorCallback);
   }
-  Book.find = (book) => {
+  Book.find = (book, callback) => {
   
     // passing the queryStr is requiring a long form ajax request instead of the one below that we tested from console
     // $.get(`${__API_URL__}/api/v1/books/find`,queryStr)
 
       $.get(`${__API_URL__}/api/v1/books/find`,book)
+        .then(Book.loadAll)
         .then(console.log('find executed'))
+        .then(callback)
         .catch(errorCallback);
 
   }
